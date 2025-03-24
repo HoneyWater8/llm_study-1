@@ -1,17 +1,13 @@
 import streamlit as st 
-from openai import OpenAI
-import os
+from dotenv import load_dotenv 
+
+load_dotenv() # .env 파일에 선언한 변수를 환경변수에 등록하는 함수 
 
 from history import init_history, add_history
 from display import print_history_message, print_message
 from input import get_prompt
 from llm import get_response_from_llm, get_llm
 
-##################################################
-# 서비스 시작 
-##################################################
-
-os.environ['OPENAI_API_KEY'] = 'sk-'
 st.title("Chatbot")
 
 # 세션 상태 초기화
