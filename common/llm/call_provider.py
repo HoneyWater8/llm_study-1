@@ -20,9 +20,9 @@ def get_response_from_llm(choiced_provider:PROVIDER_TYPE, messages, llm_name:str
   # 전체 대화 내역 전달
   client = choiced_provider.value[1]()
   response = client.chat.completions.create(
-      model=choiced_provider.value[2][llm_name].value[1],
-      messages=messages,
-      stream=True
+    model=choiced_provider.value[2][llm_name].value[1],
+    messages=messages,
+    stream=True
   )
 
   for token in response:

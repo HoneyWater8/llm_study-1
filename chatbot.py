@@ -21,20 +21,20 @@ choiced_llm = choice_llms(choiced_provider)
 prompt = get_prompt()
 
 if prompt is not None:
-    # 사용자 메시지를 세션 상태에 추가
-    add_history(ROLE_TYPE.user, prompt)
-    
-    # 사용자 메시지 표시
-    print_message(ROLE_TYPE.user.name, prompt)
-    
-    # AI 응답을 세션 상태에 추가
-    # AI 응답 표시
-    assistant_message = print_message(
-                ROLE_TYPE.assistant.name
-                , get_response_from_llm(
-                        choiced_provider=PROVIDER_TYPE[choiced_provider]
-                        , messages=st.session_state.messages, llm_name=choiced_llm)
-                , is_streaming=True)
-    
-    add_history(ROLE_TYPE.assistant, assistant_message)
+  # 사용자 메시지를 세션 상태에 추가
+  add_history(ROLE_TYPE.user, prompt)
+  
+  # 사용자 메시지 표시
+  print_message(ROLE_TYPE.user.name, prompt)
+  
+  # AI 응답을 세션 상태에 추가
+  # AI 응답 표시
+  assistant_message = print_message(
+    ROLE_TYPE.assistant.name
+    , get_response_from_llm(
+      choiced_provider=PROVIDER_TYPE[choiced_provider]
+      , messages=st.session_state.messages, llm_name=choiced_llm)
+    , is_streaming=True)
+  
+  add_history(ROLE_TYPE.assistant, assistant_message)
 
