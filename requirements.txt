@@ -4,5 +4,6 @@ openai # 오픈AI API 클라이언트 호출 라이브러리
 jupyter # 데이터 분석 및 시각화 툴
 pandas # 데이터 조작 및 분석 라이브러리
 groq # groq에서 지원하는 LLM을 API 클라이언트 호출 라이브러리
-
+langchain 
+langchain_community
 
