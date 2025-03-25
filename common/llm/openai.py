@@ -1,5 +1,6 @@
 from openai import OpenAI
 import enum
+import time
 
 class OPENAI_LLMs(enum.Enum):
   gpt_4o_mini = (enum.auto(), "gpt-4o-mini") 
@@ -16,8 +17,12 @@ def get_response_from_llm(llm, messages, llm_name:str):
   # 전체 대화 내역을 OpenAI에 전달
   response = llm.chat.completions.create(
       model=OPENAI_LLMs[llm_name].value[1], # "gpt-4o-mini"
-      messages=messages
+      messages=messages,
+      stream=True
   )
 
-  return response.choices[0].message.content
+  for token in response:
+    if token.choices[0].delta.content is not None:
+      yield token.choices[0].delta.content
+      time.sleep(0.05)
 

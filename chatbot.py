@@ -27,9 +27,12 @@ if prompt is not None:
     print_message(ROLE_TYPE.user.name, prompt)
     
     # AI 응답을 세션 상태에 추가
-    assistant_message = get_response_from_llm(
-        llm=get_llm(), messages=st.session_state.messages, llm_name=choiced_llm)
+    # AI 응답 표시
+    with st.chat_message(ROLE_TYPE.assistant.name):
+        assistant_message = st.write_stream(get_response_from_llm(
+            llm=get_llm(), messages=st.session_state.messages, llm_name=choiced_llm))
+    
     add_history(ROLE_TYPE.assistant, assistant_message)    
     # AI 응답 표시
-    print_message(ROLE_TYPE.assistant.name, assistant_message)
+    # print_message(ROLE_TYPE.assistant.name, assistant_message)
 
