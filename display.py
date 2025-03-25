@@ -1,10 +1,13 @@
 import streamlit as st 
-from streamlit_markdown import st_streaming_markdown
 
 def print_message(role, message, is_streaming=False):
   with st.chat_message(role):
     if is_streaming:
-      messages = st_streaming_markdown(message, key="token_stream") 
+      message_placeholder = st.empty()
+      messages = ""
+      for msg in message:
+        messages += msg + " "
+        message_placeholder.markdown(messages + " ")
     else:
       st.markdown(message)
       messages = message
