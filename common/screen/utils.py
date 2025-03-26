@@ -1,0 +1,17 @@
+from dotenv import load_dotenv 
+
+from common.screen.history import init_history
+from common.screen.display import print_history_message
+from common.screen.input import choice_provider, choice_llms
+
+def init_page():
+  # .env 파일에 선언한 변수를 환경변수에 등록하는 함수
+  load_dotenv() 
+  # history 초기화 
+  init_history()  
+
+def init_display():
+  print_history_message()
+  choiced_provider = choice_provider()
+  choiced_llm = choice_llms(choiced_provider)
+  return choiced_provider, choiced_llm
