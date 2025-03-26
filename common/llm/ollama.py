@@ -13,7 +13,7 @@ def ClientOllama(
     model_name, messages:list[dict], stream=True
 ):
   # Ollama 모델을 불러옵니다.
-  llm = ChatOllama(model=model_name)
+  llm = ChatOllama(model=OLLAMA_LLMs[model_name].value[1])
 
   # 프롬프트
   prompts = []
