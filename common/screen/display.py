@@ -1,8 +1,8 @@
 import streamlit as st 
 
-def print_message(role, message, is_streaming=False):
+def print_message(role, message):
   with st.chat_message(role):
-    if is_streaming:
+    if not isinstance(message, str):
       message_placeholder = st.empty() # 깡통 프린트될 메세지 변수 선언
       messages = "" # 리턴할 전체 메세지 
       for msg in message: # message(제너레이터) for문을 이용해서 msg 받을 수 있음 

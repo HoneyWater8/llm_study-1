@@ -29,8 +29,7 @@ if prompt is not None:
   # AI 응답 표시
   assistant_message = print_message(
     ROLE_TYPE.assistant.name
-    , generator
-    , is_streaming=True)
+    , generator)
   
   add_history(ROLE_TYPE.assistant, assistant_message)
 
