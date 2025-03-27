@@ -9,7 +9,7 @@ class OPENAI_LLMs(enum.Enum):
 
 
 class Provider_OPENAI(Provider):
-  def __init__(self, provider_LLMs) -> None:
+  def __init__(self, provider_LLMs=OPENAI_LLMs) -> None:
     super().__init__(provider_LLMs)
     self.client = OpenAI()
 
