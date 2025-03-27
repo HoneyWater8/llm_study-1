@@ -20,9 +20,10 @@ def get_response_from_llm(choiced_provider:PROVIDER_TYPE, messages, llm_name:str
   elif llm_name not in choiced_provider.value[2].__members__:
     raise Exception("허락한 모델명이 아닙니다.") 
 
-  for token in choiced_provider.value[1](
+  generator = choiced_provider.value[1](
     model_name=llm_name, messages=messages
-  ):
+  )
+  for token in generator:
     yield token
     time.sleep(0.05) 
 

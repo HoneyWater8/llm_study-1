@@ -11,7 +11,10 @@ def init_page():
   init_history()  
 
 def init_display():
+  # 이력 데이터를 프린트
   print_history_message()
+  # provider 리스트 
   choiced_provider = choice_provider()
+  # 선택한 provider가 제공하는 모델 리스트
   choiced_llm = choice_llms(choiced_provider)
   return choiced_provider, choiced_llm
