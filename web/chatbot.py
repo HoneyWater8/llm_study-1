@@ -25,7 +25,7 @@ def app():
     
     # AI 응답 요청
     generator = get_response_from_llm(
-        choiced_provider=PROVIDER_TYPE[choiced_provider]
+        choiced_provider=PROVIDER_TYPE[choiced_provider].value[1]   # Provider 인스턴스화
         , messages=st.session_state.messages, llm_name=choiced_llm)
     # AI 응답 표시
     assistant_message = print_message(
