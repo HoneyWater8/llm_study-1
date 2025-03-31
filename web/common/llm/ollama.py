@@ -8,7 +8,9 @@ from common.screen.constant import ROLE_TYPE, HISTORY_INFO
 from .provider import Provider
 
 class OLLAMA_LLMs(enum.Enum):
-  gemma3 = (enum.auto(), "gemma3:1b") 
+  gemma3 = (enum.auto(), "gemma3:1b")
+  gemma3_q8 = (enum.auto(), "gemma3-q8") 
+  gemma3_1b = (enum.auto(), "gemma3-1b") 
 
 class Provider_OLLAMA(Provider):
   def __init__(self, provider_LLMs=OLLAMA_LLMs) -> None:
