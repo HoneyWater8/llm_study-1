@@ -1,5 +1,6 @@
 import pandas as pd
 from tqdm.auto import tqdm
+import time
 
 from common.utils import mkdir
 from common.youtube import get_video_urls, get_youtube_video_info
@@ -15,8 +16,12 @@ def main(lst_dic:list[dict]):
 
     lst_info = []
     for url in urls:
-      video_info = get_youtube_video_info(url)
-      lst_info.append(video_info)
+      try:
+        video_info = get_youtube_video_info(url)
+        lst_info.append(video_info)
+      except:
+        pass
+      time.sleep(0.005)
 
     df = pd.DataFrame(lst_info)
     file_name = save_path+dic_data['playlist_title']+".csv"
