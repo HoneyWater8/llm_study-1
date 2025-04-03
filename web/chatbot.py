@@ -25,9 +25,8 @@ def app():
     
     # AI 응답 요청
     generator = get_response_from_llm(
-        choiced_provider=PROVIDER_TYPE[choiced_provider].value[1]() # Provider 인스턴스화
-        , messages=st.session_state.messages
-        , llm_name=choiced_llm)
+        choiced_provider=PROVIDER_TYPE[choiced_provider]
+        , messages=st.session_state.messages, llm_name=choiced_llm)
     # AI 응답 표시
     assistant_message = print_message(
       ROLE_TYPE.assistant.name
@@ -35,6 +34,5 @@ def app():
     
     add_history(ROLE_TYPE.assistant, assistant_message)
 
-if __name__=="__main__":
-  app() 
-
+if __name__ == "__main__":
+  app()
