@@ -1,5 +1,6 @@
-yt-dlp
+yt-dlp 
 pytube
-pandas
+pandas 
 jupyter
 youtube-transcript-api
+tqdm
